@@ -16,6 +16,7 @@ function render() {
   text.enter().append('text')
       .attr('class', 'enter')
       .merge(text)
+      .attr('class', 'merge')
       .text(d => d);
 
   text.exit()
