@@ -7,7 +7,7 @@
       .split(',')
       .map(() => rnd(100));
 
-    render(array);
+    window.render(array);
   });
 
   function rnd(num) {
