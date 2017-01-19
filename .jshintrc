@@ -10,7 +10,8 @@
   "strict": true,
   "sub": true,
   "globals": {
-    "componentHandler": true,
-    "MaterialMenu": true
+    "d3": true,
+    "test": true,
+    "async_test": true
   }
 }

@@ -1,6 +1,7 @@
 {
   "preset": "google",
   "disallowSpacesInAnonymousFunctionExpression": null,
+  "requireCamelCaseOrUpperCaseIdentifiers": {"allExcept": ["async_test"]},
   "validateLineBreaks": "LF",
   "validateIndentation": 2,
   "excludeFiles": ["node_modules/**", "bower_components/**", "demo/**", "test/**", "docs/**"],
