@@ -1,0 +1,20 @@
+{
+  "name": "d3-enter-exit-update-example",
+  "description": "D3 enter exit update example for educational purposes",
+  "main": "index.html",
+  "authors": [
+    "Andres Rios <rianby64@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rianby64/d3-update-enter-exit-example",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^4.4.1"
+  }
+}
