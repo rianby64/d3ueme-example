@@ -7,7 +7,7 @@ const jshint = require('gulp-jshint');
 const connect = require('gulp-connect');
 
 const paths = {
-  src: 'src', dst: './',
+  src: 'src', dst: './dist',
   css:   ['test/*.css', 'test/**/*.css',
           'src/*.css',   'src/**/*.css'],
   html:  ['src/*.html', 'src/**/*.html',
@@ -44,25 +44,40 @@ gulp.task('js-lint', _ => {
     .pipe(jscs.reporter());
 });
 
+gulp.task('html-copy', _ => {
+  return gulp.src(paths.htmlsrc)
+    .pipe(gulp.dest(paths.dst));
+});
+
+gulp.task('js-copy', _ => {
+  return gulp.src(paths.jssrc)
+    .pipe(gulp.dest(paths.dst));
+});
+
+gulp.task('css-copy', _ => {
+  return gulp.src(paths.csssrc)
+    .pipe(gulp.dest(paths.dst));
+});
+
+
 gulp.task('watch', _ => {
   gulp.watch(paths.js, ['reload']);
-  gulp.watch(paths.html, ['html-hint', 'reload']);
-  gulp.watch(paths.jssrc, ['js-lint', 'reload']);
-  gulp.watch(paths.csssrc, ['css-lint', 'reload']);
+  gulp.watch(paths.html, ['html-hint', 'html-copy', 'reload']);
+  gulp.watch(paths.jssrc, ['js-lint', 'js-copy', 'reload']);
+  gulp.watch(paths.csssrc, ['css-lint', 'css-copy', 'reload']);
 });
 
 gulp.task('connect', function() {
   connect.server({
-    root: paths.src,
+    root: paths.dst,
     livereload: true,
-    port: 7001
+    port: 7002
   });
 });
 
 gulp.task('default', [
-  'js-lint',
-  'css-lint',
-  'html-hint',
+  'js-lint', 'css-lint', 'html-hint',
+  'html-copy', 'js-copy', 'css-copy',
   'watch',
   'connect'
 ]);
