@@ -12,6 +12,8 @@
   "globals": {
     "d3": true,
     "test": true,
-    "async_test": true
+    "async_test": true,
+    "assert_true": true,
+    "assert_equals": true
   }
 }
