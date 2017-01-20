@@ -1,2 +1,4 @@
-# d3-update-enter-exit-example
-D3 update enter exit example
+# d3ueme example
+D3 update enter merge exit example
+
+[Live demo](http://d3ueme-example.m3c.space)
