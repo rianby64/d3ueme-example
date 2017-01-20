@@ -7,7 +7,7 @@ const jshint = require('gulp-jshint');
 const connect = require('gulp-connect');
 
 const paths = {
-  src: 'src', dst: './dist',
+  src: 'src', dst: 'dist',
   css:   ['test/*.css', 'test/**/*.css',
           'src/*.css',   'src/**/*.css'],
   html:  ['src/*.html', 'src/**/*.html',
@@ -69,9 +69,9 @@ gulp.task('watch', _ => {
 
 gulp.task('connect', function() {
   connect.server({
-    root: paths.dst,
+    root: './',
     livereload: true,
-    port: 7002
+    port: 9008
   });
 });
 
