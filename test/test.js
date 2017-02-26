@@ -1,8 +1,8 @@
-(() => {
+(function() {
   'use strict';
   var render = window.render;
 
-  test(() => {
+  test(function() {
     var arrayEnter = [1, 2, 3];
 
     render(arrayEnter);
@@ -10,14 +10,14 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.enter'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         assert_equals(item.textContent, arrayEnter[i].toString());
         assert_true(item.classList.contains('enter'));
         assert_equals(item.classList.length, 1);
       });
   }, 'Create elements by enter');
 
-  test(() => {
+  test(function() {
     var arrayEnterUpdate = [5, 4, 3, 2];
 
     render(arrayEnterUpdate);
@@ -26,7 +26,7 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.update'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         assert_equals(item.textContent, arrayEnterUpdate[i].toString());
         assert_true(item.classList.contains('update'));
         assert_equals(item.classList.length, 1);
@@ -38,7 +38,7 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.enter'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         var i_ = i + lastI;
         assert_equals(item.textContent, arrayEnterUpdate[i_].toString());
         assert_true(item.classList.contains('enter'));
@@ -46,7 +46,7 @@
       });
   }, 'Update and append elements');
 
-  test(() => {
+  test(function() {
     var arrayEnterUpdate = [1, 2];
     var arrayExit = [1, 2, 3, 2];
 
@@ -56,7 +56,7 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.update'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         assert_equals(item.textContent, arrayEnterUpdate[i].toString());
         assert_true(item.classList.contains('update'));
         assert_equals(item.classList.length, 1);
@@ -69,7 +69,7 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.exit'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         var i_ = i + lastI;
         assert_equals(item.textContent, arrayExit[i_].toString());
         assert_true(item.classList.contains('exit'));
@@ -77,7 +77,7 @@
       });
   }, 'Update and remove elements');
 
-  test(() => {
+  test(function() {
     var arrayEnterUpdate = [];
     var arrayExit = [1, 2, 3, 2];
 
@@ -89,7 +89,7 @@
     Array.prototype
       .slice
       .call(document.querySelectorAll('.exit'))
-      .forEach((item, i) => {
+      .forEach(function(item, i) {
         assert_equals(item.textContent, arrayExit[i].toString());
         assert_true(item.classList.contains('exit'));
         assert_equals(item.classList.length, 1);

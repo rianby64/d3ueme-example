@@ -1,11 +1,11 @@
-(() => {
+(function() {
   'use strict';
   document.querySelector('button')
-    .addEventListener('click', () => {
+    .addEventListener('click', function() {
     var array = new Array(rnd(20))
       .join()
       .split(',')
-      .map(() => rnd(100));
+      .map(function() { return rnd(100); });
 
     window.render(array);
   });

@@ -1,4 +1,4 @@
-(() => {
+(function() {
   'use strict';
   function render(array) {
     var array_ = array || [];
@@ -11,7 +11,7 @@
     text.enter().append('text')
       .attr('class', 'enter')
       .merge(text)
-      .text(d => d);
+      .text(function(d) { return d; });
 
     text.exit()
       .attr('class', 'exit');
