@@ -12,10 +12,7 @@
 
     // I want to work with a pseudo-array... it's an object, but it behaves
     // like an array.
-    var data = {};
-    Object.defineProperty(data, 'length', {
-      value: array_.length
-    });
+    var data = [];
 
     /*
 var text = d3.select('svg') - save selection and selectall and data into text
@@ -25,7 +22,7 @@ var text = d3.select('svg') - save selection and selectall and data into text
     var svg = document.querySelector('svg');
     svg.data = data;
     var text = d3.select(svg)
-      .attr('height', 16 * (data.length + 1))
+      .attr('height', 16 * (array_.length + 1))
       .selectAll('text')
       .data(array_);
 
