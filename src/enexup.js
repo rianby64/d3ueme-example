@@ -10,14 +10,29 @@
   function render(array) {
     var array_ = array || []; // be sure you're working with an array
 
+    // I want to work with a pseudo-array... it's an object, but it behaves
+    // like an array.
+    var data = {};
+    array_.forEach((d, i) => {
+      Object.defineProperty(data, i, {
+        get: () => d
+      });
+    });
+
+    Object.defineProperty(data, 'length', {
+      value: array_.length
+    });
+
     /*
 var text = d3.select('svg') - save selection and selectall and data into text
   .selectAll('text') - effect "Wat?" https://bost.ocks.org/mike/join/
   .data(array_); - see above
      */
-    var text = d3.select('svg')
+    var svg = document.querySelector('svg');
+    svg.data = data;
+    var text = d3.select(svg)
       .selectAll('text')
-      .data(array_);
+      .data(data);
 
     /*
 Be sure we do all the manipulations with existing elements.
