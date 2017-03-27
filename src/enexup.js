@@ -13,6 +13,9 @@
     // I want to work with a pseudo-array... it's an object, but it behaves
     // like an array.
     var data = {};
+
+    // Setup the interface... put here everything related to
+    // length, push, pop, slice... etc
     Object.defineProperty(data, 'length', {
       get: () => array_.length,
       set: (value) => {
@@ -21,7 +24,18 @@
       }
     });
 
+    Object.defineProperty(data, 'push', {
+      value: function(value) {
+        array_.push(value);
+        internalRender();
+      }
+    });
+
     var svg = document.querySelector('svg');
+    // here I should add something like
+    //   Object.defineProperty(svg, 'data', { get: ... , set: ... });
+    // in order to setup the array once, or maybe setup it halting
+    // the merge step.
     internalRender();
   function internalRender() {
     /*

@@ -136,4 +136,11 @@
     assert_equals(svg.data.length, svg.querySelectorAll('text').length);
   }, 'Manipulate svg.data.length');
 
+  test(function() {
+    assert_equals(svg.data.length, 5);
+    svg.data.push(99);
+    assert_equals(svg.data[5], 99);
+    assert_equals(Number(svg.querySelectorAll('text')[5].textContent), svg.data[5]);
+  });
+
 })();
