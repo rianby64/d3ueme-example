@@ -17,15 +17,18 @@
       get: () => array_.length,
       set: (value) => {
         array_.length = value;
+        internalRender();
       }
     });
 
+    var svg = document.querySelector('svg');
+    internalRender();
+  function internalRender() {
     /*
 var text = d3.select('svg') - save selection and selectall and data into text
   .selectAll('text') - effect "Wat?" https://bost.ocks.org/mike/join/
   .data(array_); - see above
      */
-    var svg = document.querySelector('svg');
     svg.data = data;
     var text = d3.select(svg)
       .attr('height', 16 * (array_.length + 1))
@@ -71,6 +74,7 @@ text.enter().append('text') - create every new 'text' element
     text.exit()
       .attr('class', 'exit')
       .remove();
+  }
   }
 
   // Expose this function. Osmani would be sad if he'd see this line...

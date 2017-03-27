@@ -126,7 +126,14 @@
         assert_equals(Number(onecell.textContent), svg.data[i]);
       }));
     }))([2, 3, 1]);
-
   }, 'Update an element via svg.data[i] = value');
+
+  test(function() {
+    assert_equals(svg.data.length, svg.querySelectorAll('text').length);
+    svg.data.length -= 2;
+    assert_equals(svg.data.length, svg.querySelectorAll('text').length);
+    svg.data.length += 3;
+    assert_equals(svg.data.length, svg.querySelectorAll('text').length);
+  }, 'Manipulate svg.data.length');
 
 })();
