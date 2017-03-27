@@ -7,6 +7,7 @@
       .split(',')
       .map(function() { return rnd(100); });
 
+    // render a random array
     window.render(array);
   });
 
