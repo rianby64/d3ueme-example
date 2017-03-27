@@ -103,15 +103,15 @@
     var array = [7, 8, 9, 10];
     render(array);
 
-    ((fixture) => {
-      fixture.forEach(i => {
+    (this.step_func((fixture) => {
+      fixture.forEach(this.step_func(i => {
         var onecell = svg.querySelectorAll('text')[i];
         assert_equals(Number(onecell.textContent), svg.data[i]);
 
         svg.data[i] = 11;
         assert_equals(Number(onecell.textContent), svg.data[i]);
-      });
-    })([2, 3, 1]);
+      }));
+    }))([2, 3, 1]);
 
   }, 'Update an element via svg.data[i] = value');
 
