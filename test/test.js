@@ -66,6 +66,12 @@
     assert_equals(lastI, arrayEnterUpdate.length);
     assert_equals(document.querySelectorAll('.enter').length, 0);
 
+    /**
+     * because of
+     * https://github.com/rianby64/d3ueme-example/blob/master/src/enexup.js#L73
+     * I may delete the following asserts
+     */
+    /*
     Array.prototype
       .slice
       .call(document.querySelectorAll('.exit'))
@@ -75,6 +81,7 @@
         assert_true(item.classList.contains('exit'));
         assert_equals(item.classList.length, 1);
       });
+      */
   }, 'Update and remove elements');
 
   test(function() {
@@ -86,6 +93,12 @@
     assert_equals(document.querySelectorAll('.enter').length, 0);
     assert_equals(document.querySelectorAll('.update').length, 0);
 
+    /**
+     * because of
+     * https://github.com/rianby64/d3ueme-example/blob/master/src/enexup.js#L73
+     * I may delete the following asserts
+     */
+    /*
     Array.prototype
       .slice
       .call(document.querySelectorAll('.exit'))
@@ -94,10 +107,11 @@
         assert_true(item.classList.contains('exit'));
         assert_equals(item.classList.length, 1);
       });
+      */
   }, 'Remove elements');
 
+  var svg = document.querySelector('svg');
   test(function() {
-    var svg = document.querySelector('svg');
     assert_true(svg.hasOwnProperty('data'));
 
     var array = [7, 8, 9, 10];
