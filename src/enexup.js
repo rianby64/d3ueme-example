@@ -13,12 +13,6 @@
     // I want to work with a pseudo-array... it's an object, but it behaves
     // like an array.
     var data = {};
-    array_.forEach((d, i) => {
-      Object.defineProperty(data, i, {
-        get: () => d
-      });
-    });
-
     Object.defineProperty(data, 'length', {
       value: array_.length
     });
@@ -31,15 +25,17 @@ var text = d3.select('svg') - save selection and selectall and data into text
     var svg = document.querySelector('svg');
     svg.data = data;
     var text = d3.select(svg)
+      .attr('height', 16 * (data.length + 1))
       .selectAll('text')
-      .data(data);
+      .data(array_);
 
     /*
 Be sure we do all the manipulations with existing elements.
 This part works upon already created elements. This is usefull when you call
 twice or more times the function render with an array with similar elements.
      */
-    text.attr('class', 'update');
+    text.attr('class', 'update')
+      .attr('y', (d, i) => 10 * i);
 
     /*
 text.enter().append('text') - create every new 'text' element
@@ -52,13 +48,26 @@ text.enter().append('text') - create every new 'text' element
     text.enter().append('text')
       .attr('class', 'enter')
       .merge(text)
+      .attr('y', (d, i) => 16 * (1 + i))
+      .each((d, i, els) => {
+        Object.defineProperty(data, i, {
+          get: () => array_[i],
+          set: (v) => {
+            d3.select(els[i])
+              .text(v);
+            array_[i] = v;
+          },
+          configurable: true
+        });
+      })
       .text(function(d) { return d; });
 
     /*
      * You should write something line text.exit().remove();
      */
     text.exit()
-      .attr('class', 'exit');
+      .attr('class', 'exit')
+      .remove();
   }
 
   // Expose this function. Osmani would be sad if he'd see this line...
